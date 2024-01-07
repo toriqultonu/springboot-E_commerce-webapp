@@ -1,7 +1,9 @@
 package com.example.deshdeal.controller;
 
+import com.example.deshdeal.dto.ProductDTO;
 import com.example.deshdeal.model.Category;
 import com.example.deshdeal.service.CategoryService;
+import com.example.deshdeal.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,8 @@ public class AdminController {
 
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    ProductService productService;
     @GetMapping("/admin")
     public String adminHome(){
         return "adminHome";
@@ -57,4 +61,17 @@ public class AdminController {
         else return "404";
     }
 
+    //Product Section
+    @GetMapping("/admin/products")
+    public String getProducts(Model model){
+        model.addAttribute("products",productService.getAllProduct());
+        return "products";
+    }
+
+    @GetMapping("/admin/products/add")
+    public String productAddGet(Model model){
+        model.addAttribute("productDTO", new ProductDTO());
+        model.addAttribute("categories", categoryService.getAllCategory());
+        return "productsAdd";
+    }
 }
