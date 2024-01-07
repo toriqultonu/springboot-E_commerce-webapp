@@ -21,6 +21,7 @@ import java.util.Optional;
 @Controller
 public class AdminController {
 
+    public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/productImages";
     @Autowired
     CategoryService categoryService;
     @Autowired
