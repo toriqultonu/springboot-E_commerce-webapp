@@ -29,7 +29,8 @@ public class User {
     private String password;
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
-            name = "user_role", joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
+            name = "user_role",
+            joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinTable(name = "ROLE_ID", referencedColumnName = "ID")}
     )
 
