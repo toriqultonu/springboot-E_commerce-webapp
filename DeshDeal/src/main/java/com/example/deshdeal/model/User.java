@@ -31,9 +31,8 @@ public class User {
     @JoinTable(
             name = "user_role",
             joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinTable(name = "ROLE_ID", referencedColumnName = "ID")}
+            inverseJoinColumns = {@JoinColumn(name = "ROLE_ID", referencedColumnName = "ID")}
     )
-
     private List<Role> roles;
 
     public User(User user) {
